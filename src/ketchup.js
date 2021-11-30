@@ -27,12 +27,12 @@ module.exports = function () {
 
   const prep = () => {
     const childProcess = exec(`
-    git checkout main
-    git pull
-    git branch -D ${branch}
-    git push origin :${branch}
-    git checkout -b ${branch}
-    git push origin ${branch}
+      git checkout main
+      git pull
+      git branch -D ${branch}
+      git push origin :${branch}
+      git checkout -b ${branch}
+      git push origin ${branch}
   `)
     log(childProcess)
   }
@@ -40,9 +40,9 @@ module.exports = function () {
   const push = (event, path) => {
     console.log(event, path)
     const childProcess = exec(`
-    git add .
-    git commit -m "committing to ${branch}"
-    git push origin ${branch}
+      git add .
+      git commit -m "committing to ${branch}"
+      git push origin ${branch}
   `)
     log(childProcess)
   }
