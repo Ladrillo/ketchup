@@ -7,7 +7,7 @@ module.exports = function () {
   const branch = process.argv[2] || 'lecture'
 
   const throttleConfig = {
-    leading: false,
+    leading: true,
     trailing: true,
   }
 
@@ -26,6 +26,7 @@ module.exports = function () {
   }
 
   const prepProcess = exec(`
+      git stash
       git checkout main
       git pull
       git branch -D ${branch}
