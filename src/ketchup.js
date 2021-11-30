@@ -7,7 +7,7 @@ module.exports = function () {
   const branch = process.argv[2] || 'lecture'
 
   const throttleConfig = {
-    leading: true,
+    leading: false,
     trailing: true,
   }
 
@@ -46,6 +46,6 @@ module.exports = function () {
     log(pushProcess)
   }
 
-  const throttledPush = throttle(push, 5000, throttleConfig)
+  const throttledPush = throttle(push, 30000, throttleConfig)
   chokidar.watch('.', chokidarConfig).on('all', throttledPush)
 }
