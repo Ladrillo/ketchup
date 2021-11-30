@@ -1,0 +1,29 @@
+{
+  "name": "@ladrillo/ketchup",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "nodemon --inspect index.js $1",
+    "test": "jest",
+    "prepublishOnly": "npm i && npm test || exit 1"
+  },
+  "author": "Gabriel Cabrejas",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ladrillo/ketchup.git"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.3",
+    "eslint": "^8.3.0",
+    "jest": "^27.4.2",
+    "nodemon": "^2.0.15"
+  },
+  "bin": "./index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "chokidar": "^3.5.2"
+  }
+}
