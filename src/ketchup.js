@@ -25,8 +25,7 @@ module.exports = function () {
     })
   }
 
-  const prep = () => {
-    const childProcess = exec(`
+  const prepProcess = exec(`
       git checkout main
       git pull
       git branch -D ${branch}
@@ -34,20 +33,17 @@ module.exports = function () {
       git checkout -b ${branch}
       git push origin ${branch}
   `)
-    log(childProcess)
-  }
+  log(prepProcess)
 
   const push = (event, path) => {
     console.log(event, path)
-    const childProcess = exec(`
+    const pushProcess = exec(`
       git add .
       git commit -m "committing to ${branch}"
       git push origin ${branch}
   `)
-    log(childProcess)
+    log(pushProcess)
   }
-
-  prep()
 
   const throttledPush = throttle(push, 5000, throttleConfig)
   chokidar.watch('.', chokidarConfig).on('all', throttledPush)
