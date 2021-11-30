@@ -3,19 +3,28 @@ const { exec } = require('child_process')
 const chokidar = require('chokidar')
 const throttle = require('lodash.throttle')
 
-const chokidarConfig = {
-  ignoreInitial: true,
-  ignored: ['**/node_modules/**/*', '**/.git/**/*'],
-}
+const branch = process.argv[2] || 'lecture'
 
 const throttleConfig = {
   leading: false,
   trailing: true,
 }
 
-const push = (event, path) => {
-  console.log(event, path)
-  const branch = process.argv[2] || 'lecture'
+const chokidarConfig = {
+  ignoreInitial: true,
+  ignored: ['**/node_modules/**/*', '**/.git/**/*'],
+}
+
+const log = process => {
+  process.stdout.on('data', data => {
+    console.log(data)
+  })
+  process.stderr.on('data', data => {
+    console.error(data)
+  })
+}
+
+const prep = () => {
   const childProcess = exec(`
     git checkout main
     git pull
@@ -24,16 +33,20 @@ const push = (event, path) => {
     git checkout -b ${branch}
     git push origin ${branch}
   `)
-  childProcess.stdout.on('data', (data) => {
-    console.log(data)
-  })
-  childProcess.stderr.on('data', (data) => {
-    console.error(data)
-  })
+  log(childProcess)
 }
+
+const push = (event, path) => {
+  console.log(event, path)
+  const childProcess = exec(`
+    git add .
+    git commit -m "committing to ${branch}"
+    git push origin ${branch}
+  `)
+  log(childProcess)
+}
+
+prep()
 
 const throttledPush = throttle(push, 5000, throttleConfig)
-
-module.exports = function () {
-  chokidar.watch('.', chokidarConfig).on('all', throttledPush)
-}
+chokidar.watch('.', chokidarConfig).on('all', throttledPush)
