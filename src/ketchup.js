@@ -17,7 +17,6 @@ const push = (event, path) => {
   console.log(event, path)
   const branch = process.argv[2] || 'lecture'
   const childProcess = exec(`
-    git stash
     git checkout main
     git pull
     git branch -D ${branch}
