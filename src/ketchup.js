@@ -1,4 +1,4 @@
-const { execSync } = require('child_process')
+const { exec } = require('child_process')
 const throttle = require('lodash.throttle')
 const chokidar = require('chokidar')
 
@@ -25,20 +25,19 @@ module.exports = function () {
   }
 
   const prep = () => {
-    const prepProcess = execSync(`
+    const prepProcess = exec(`
       git stash
       git branch -D ${branch}
       git push origin :${branch}
       git checkout -b ${branch}
       git push origin ${branch}
     `)
-    // log(prepProcess)
-    prepProcess.kill(prepProcess.pid)
+    log(prepProcess)
   }
 
   const push = (event, path) => {
     console.log(`🔥 ${event} in ${path}\n`)
-    const pushProcess = execSync(`
+    const pushProcess = exec(`
       git add .
       git commit -m 'committing to ${branch}'
       git push origin ${branch}
