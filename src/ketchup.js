@@ -52,5 +52,5 @@ module.exports = function () {
 
   console.log(`\n🍅🍅🍅 Ketchup targeting ${branch} branch! 🍅🍅🍅`)
   console.log(`🍅🍅🍅 Ketchup targeting ${branch} branch! 🍅🍅🍅`)
-  console.log(`🍅🍅🍅 Ketchup targeting ${branch} branch! 🍅🍅🍅\n`)
+  console.log(`🍅🍅🍅 Ketchup targeting ${branch} branch! 🍅🍅🍅\n`);
 }
