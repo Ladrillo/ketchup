@@ -42,6 +42,7 @@ module.exports = function () {
       git commit -m 'committing to ${branch}'
       git push origin ${branch}
     `)
+    console.log(pushProcess)
     log(pushProcess)
   }
 
