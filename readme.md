@@ -2,7 +2,7 @@
 
 ## About
 
-Ketchup is a CLI tool to allow teachers demoing a coding project to automatically commit & push to Github whenever changes are made to the files of the project, throttling to once every 30 seconds. This way students can reset to the teacher's remote branch if they fall behind during the demo. Students must clone the teacher's repo _without_ forking it first.
+Ketchup is a CLI tool to allow teachers demoing a coding project to automatically commit & push to Github whenever changes are made to the files of the project, throttling to at most once every 30 seconds. This way students can reset their files and folders to the teacher's remote branch if they fall behind, and teachers don't have to push manually. Students must clone the teacher's repo _without_ forking it first.
 
 ## Before Using Ketchup
 
@@ -30,15 +30,15 @@ npx @ladrillo/ketchup foo-branch resume
 
 In order to resume, the branch name must be provided. Running Ketchup without both arguments in this situation can cause the loss of all work done so far.
 
-## The Student
+## The Students
 
-Tell students they can catch up by executing:
+Students can catch up by executing:
 
 ```bash
 git fetch && git reset --hard origin/foo-branch
 ```
 
-In JavaScript projects you can set up a "ketchup" script in the `package.json`:
+In JavaScript projects a "ketchup" script can be added to the `package.json`:
 
 ```json
 {
@@ -58,4 +58,5 @@ npm run ketchup
 
 1. If new packages are added to the project during the demo, students should run `npm i` after catching up.
 2. It's advisable that students have auto-save enabled in their editors.
-3. It's advisable that students close other programs besides their editors that might be accessing the project files, before catching up.
+3. Students should close other programs besides their editors that might be accessing the project files, before catching up.
+4. Don't forget to gitignode the `node_modules` folder in JavaScript projects.
