@@ -17,12 +17,8 @@ module.exports = function () {
   }
 
   const log = process => {
-    process.stdout.on('data', data => {
-      console.log(data)
-    })
-    process.stderr.on('data', data => {
-      console.error(data)
-    })
+    process.stdout.on('data', console.log)
+    process.stderr.on('data', console.error)
   }
 
   const prep = () => {
@@ -44,11 +40,13 @@ module.exports = function () {
       git add .
       git commit -m "committing to ${branch}"
       git push origin ${branch}
-  `)
+    `)
     log(pushProcess)
   }
 
   if (resume !== 'resume') prep()
   const throttledPush = throttle(push, 5000, throttleConfig)
   chokidar.watch('.', chokidarConfig).on('all', throttledPush)
+
+  console.log(`\n🍅 Ketchup ready to push changes to ${branch}!\n`)
 }
