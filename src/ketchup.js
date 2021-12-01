@@ -39,7 +39,7 @@ module.exports = function () {
   }
 
   const push = (event, path) => {
-    console.log(`🔥 $${event} in ${path}\n`)
+    console.log(`🔥 ${event} in ${path}\n`)
     const pushProcess = exec(`
       git add .
       git commit -m 'committing to ${branch}'
@@ -52,5 +52,7 @@ module.exports = function () {
   const throttledPush = throttle(push, 5000, throttleConfig)
   chokidar.watch('.', chokidarConfig).on('all', throttledPush)
 
+  console.log(`\n🍅🍅🍅 Ketchup targeting ${branch} branch! 🍅🍅🍅\n`)
+  console.log(`\n🍅🍅🍅 Ketchup targeting ${branch} branch! 🍅🍅🍅\n`)
   console.log(`\n🍅🍅🍅 Ketchup targeting ${branch} branch! 🍅🍅🍅\n`)
 }
