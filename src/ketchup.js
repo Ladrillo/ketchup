@@ -1,7 +1,7 @@
 const { execSync } = require('child_process')
 const throttle = require('lodash.throttle')
 const chokidar = require('chokidar')
-const fkill = require('fkill')
+const fkill = import('fkill')
 
 module.exports = function () {
   const [, , branch = 'lecture', resume] = process.argv
