@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 const { exec } = require('child_process')
 const throttle = require('lodash.throttle')
 const chokidar = require('chokidar')
@@ -50,7 +49,7 @@ module.exports = function () {
   const throttledPush = throttle(push, 30000, throttleConfig)
   chokidar.watch('.', chokidarConfig).on('all', throttledPush)
 
-  console.log(`\n🍅🍅🍅 Ketchup targeting ${branch} branch! 🍅🍅🍅`)
-  console.log(`🍅🍅🍅 Ketchup targeting ${branch} branch! 🍅🍅🍅`)
-  console.log(`🍅🍅🍅 Ketchup targeting ${branch} branch! 🍅🍅🍅\n`)
+  console.log(`\n🍅🍅🍅 Ketchup pushing to ${branch} branch! 🍅🍅🍅`)
+  console.log(`🍅🍅🍅 Ketchup pushing to ${branch} branch! 🍅🍅🍅`)
+  console.log(`🍅🍅🍅 Ketchup pushing to ${branch} branch! 🍅🍅🍅\n`)
 }
