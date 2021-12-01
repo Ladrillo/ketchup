@@ -39,7 +39,7 @@ module.exports = function () {
   }
 
   const push = (event, path) => {
-    console.log(event, path)
+    console.log(`🔥 $${event} in ${path}\n`)
     const pushProcess = exec(`
       git add .
       git commit -m 'committing to ${branch}'
