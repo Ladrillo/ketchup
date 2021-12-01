@@ -1,6 +1,7 @@
-const { exec } = require('child_process')
+const { execSync } = require('child_process')
 const throttle = require('lodash.throttle')
 const chokidar = require('chokidar')
+const fkill = require('fkill')
 
 module.exports = function () {
   const [, , branch = 'lecture', resume] = process.argv
@@ -25,7 +26,7 @@ module.exports = function () {
   }
 
   const prep = () => {
-    const prepProcess = exec(`
+    const prepProcess = execSync(`
       git stash
       git branch -D ${branch}
       git push origin :${branch}
@@ -33,16 +34,22 @@ module.exports = function () {
       git push origin ${branch}
     `)
     log(prepProcess)
+    fkill(prepProcess.pid)
+      .then(data => {
+        console.log('killed process', data)
+      })
+      .catch(error => {
+        console.error('something happened killing process', error.message)
+      })
   }
 
   const push = (event, path) => {
     console.log(`🔥 ${event} in ${path}\n`)
-    const pushProcess = exec(`
+    const pushProcess = execSync(`
       git add .
       git commit -m 'committing to ${branch}'
       git push origin ${branch}
     `)
-    console.log(pushProcess)
     log(pushProcess)
   }
 
