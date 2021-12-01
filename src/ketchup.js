@@ -33,7 +33,7 @@ module.exports = function () {
       git checkout -b ${branch}
       git push origin ${branch}
     `)
-    log(prepProcess)
+    // log(prepProcess)
     fkill(prepProcess.pid)
       .then(data => {
         console.log('killed process', data)
