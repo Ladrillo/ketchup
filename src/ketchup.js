@@ -18,10 +18,10 @@ module.exports = function () {
 
   const log = process => {
     process.stdout.on('data', data => {
-      console.log(`🍅\s${data}`)
+      console.log(`🍅 ${data}`)
     })
     process.stderr.on('data', data => {
-      console.error(`🍅\s${data}`)
+      console.error(`🍅 ${data}`)
     })
   }
 
@@ -52,5 +52,5 @@ module.exports = function () {
   const throttledPush = throttle(push, 5000, throttleConfig)
   chokidar.watch('.', chokidarConfig).on('all', throttledPush)
 
-  console.log(`\n🍅\sKetchup targeting ${branch} branch!\n`)
+  console.log(`\n🍅 Ketchup targeting ${branch} branch!\n`)
 }
