@@ -28,8 +28,6 @@ module.exports = function () {
   const prep = () => {
     const prepProcess = exec(`
       git stash
-      git checkout main
-      git pull
       git branch -D ${branch}
       git push origin :${branch}
       git checkout -b ${branch}
