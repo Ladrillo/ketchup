@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 const { exec } = require('child_process')
-const chokidar = require('chokidar')
 const throttle = require('lodash.throttle')
+const chokidar = require('chokidar')
 
 module.exports = function () {
-  const branch = process.argv[2] || 'lecture'
+  const [, , branch = 'lecture', resume] = process.argv
 
   const throttleConfig = {
     leading: false,
@@ -25,7 +25,8 @@ module.exports = function () {
     })
   }
 
-  const prepProcess = exec(`
+  const prep = () => {
+    const prepProcess = exec(`
       git stash
       git checkout main
       git pull
@@ -33,8 +34,9 @@ module.exports = function () {
       git push origin :${branch}
       git checkout -b ${branch}
       git push origin ${branch}
-  `)
-  log(prepProcess)
+    `)
+    log(prepProcess)
+  }
 
   const push = (event, path) => {
     console.log(event, path)
@@ -46,6 +48,7 @@ module.exports = function () {
     log(pushProcess)
   }
 
+  if (resume !== 'resume') prep()
   const throttledPush = throttle(push, 30000, throttleConfig)
   chokidar.watch('.', chokidarConfig).on('all', throttledPush)
 }
