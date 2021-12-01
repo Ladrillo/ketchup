@@ -9,7 +9,7 @@ Ketchup is a CLI tool to allow teachers demoing a coding project to automaticall
 1. Be at the root folder of the project.
 2. Check out the branch you want to use as the _starting point_ of the demo (usually "main").
 3. Have a clean working tree. Any outstanding changes will be stashed.
-4. Decide on a branch name _to push commits to_, different from the starting point branch.
+4. Decide on a branch name _to push commits to_, **different from the starting point branch**.
 
 ## The Teacher
 
@@ -19,7 +19,7 @@ Execute once at the beginning of the demo:
 npx @ladrillo/ketchup foo-branch
 ```
 
-If no branch name is provided, "lecture" is used. This is the branch Ketchup will push to, and students can reset to.
+If no branch name is provided (e.g. "foo-branch"), "lecture" is used instead. This is the branch Ketchup will push to, and students can reset to.
 
 If Ketchup is closed during the demo, you can continue where you left off by running:
 
@@ -29,7 +29,7 @@ npx @ladrillo/ketchup foo-branch resume
 
 **IMPORTANT**
 
-In order to resume, the branch name must be provided. Running Ketchup without both arguments in this situation can cause the loss of all work done so far.
+In order to resume, the branch name must be provided. Running Ketchup without both arguments in this situation can result in the loss of all work done so far.
 
 ## The Students
 
