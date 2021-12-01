@@ -48,7 +48,7 @@ module.exports = function () {
     log(pushProcess)
   }
 
-  if (resume !== 'resume') prep()
+  if (!resume) prep()
   const throttledPush = throttle(push, 5000, throttleConfig)
   chokidar.watch('.', chokidarConfig).on('all', throttledPush)
 
