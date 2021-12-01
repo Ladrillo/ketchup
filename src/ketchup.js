@@ -32,7 +32,7 @@ module.exports = function () {
       git checkout -b ${branch}
       git push origin ${branch}
     `)
-    log(prepProcess)
+    // log(prepProcess)
     prepProcess.kill(prepProcess.pid)
   }
 
