@@ -1,7 +1,6 @@
 const { execSync } = require('child_process')
 const throttle = require('lodash.throttle')
 const chokidar = require('chokidar')
-const fkill = import('fkill')
 
 module.exports = function () {
   const [, , branch = 'lecture', resume] = process.argv
@@ -33,14 +32,8 @@ module.exports = function () {
       git checkout -b ${branch}
       git push origin ${branch}
     `)
-    // log(prepProcess)
-    fkill(prepProcess.pid)
-      .then(data => {
-        console.log('killed process', data)
-      })
-      .catch(error => {
-        console.error('something happened killing process', error.message)
-      })
+    log(prepProcess)
+    prepProcess.kill(prepProcess.pid)
   }
 
   const push = (event, path) => {
