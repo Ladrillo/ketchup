@@ -2,6 +2,18 @@ const { exec, spawn } = require('child_process')
 const throttle = require('lodash.throttle')
 const chokidar = require('chokidar')
 
+const getTime = (date = new Date()) => {
+  return date.toLocaleString('en-US', {
+    hour12: true,
+    day: '2-digit',
+    month: 'long',
+    weekday: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  })
+}
+
 const log = (proc, name, nuke = false) => {
   proc.stdout.on('data', data => {
     console.log(`🍅 ${data}`)
@@ -11,7 +23,9 @@ const log = (proc, name, nuke = false) => {
     if (nuke) process.exit(1)
   })
   proc.on('exit', code => {
-    console.log(`${code > 0 ? '❓' : '✨'} ${name} process exited with code ${code}\n`)
+    const emoji = code > 0 ? '❓' : '✨'
+    const outcome = code > 0 ? 'failed' : 'succeeded'
+    console.log(`${emoji} ${name} process ${outcome} at ${getTime()}\n`)
   })
 }
 
