@@ -11,7 +11,7 @@ const log = (proc, name, nuke = false) => {
     if (nuke) process.exit(1)
   })
   proc.on('exit', code => {
-    console.log(`${code > 0 ? '❓' : '✨'} ${name} process exited with code ${code}`)
+    console.log(`${code > 0 ? '❓' : '✨'} ${name} process exited with code ${code}\n`)
   })
 }
 
@@ -43,7 +43,7 @@ module.exports = function () {
   }
 
   const push = (event, path) => {
-    console.log(`\n🔥 ${event} in ${path}\n`)
+    console.log(`🔥 ${event} in ${path}\n`)
     const pushProcess = exec(`
       git add .
       git commit -m 'committing to ${branch}'
