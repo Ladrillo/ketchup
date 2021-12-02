@@ -1,9 +1,21 @@
-const { exec } = require('child_process')
+const { exec, spawn } = require('child_process')
 const throttle = require('lodash.throttle')
 const chokidar = require('chokidar')
 
+const log = process => {
+  process.stdout.on('data', data => {
+    console.log(`🍅 ${data}`)
+  })
+  process.stderr.on('data', data => {
+    console.error(`🍅 ${data}`)
+  })
+}
+
 module.exports = function () {
-  const [, , branch = 'lecture', resume] = process.argv
+  const [, , branch = '@..foo---', resume] = process.argv
+
+  const checkBranchName = spawn('git', ['check-ref-format', '--branch', branch])
+  log(checkBranchName)
 
   const throttleConfig = {
     leading: false,
@@ -13,15 +25,6 @@ module.exports = function () {
   const chokidarConfig = {
     ignoreInitial: true,
     ignored: ['**/node_modules/**/*', '**/.git/**/*'],
-  }
-
-  const log = process => {
-    process.stdout.on('data', data => {
-      console.log(`🍅 ${data}`)
-    })
-    process.stderr.on('data', data => {
-      console.error(`🍅 ${data}`)
-    })
   }
 
   const prep = () => {
