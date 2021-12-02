@@ -77,6 +77,6 @@ module.exports = function () {
     ██╔═██╗ ██╔══╝     ██║   ██║     ██╔══██║██║   ██║██╔═══╝ ╚═╝
     ██║  ██╗███████╗   ██║   ╚██████╗██║  ██║╚██████╔╝██║     ██╗
     ╚═╝  ╚═╝╚══════╝   ╚═╝    ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝
-    Pushing to ${branch} branch...
+    v${require('../package.json').version} pushing to ${branch} branch...
   `)
 }
