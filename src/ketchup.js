@@ -32,7 +32,7 @@ const log = (proc, name, nuke = false) => {
 module.exports = function () {
   const [, , branch = 'lecture', resume] = process.argv
 
-  const checkBranchName = spawn('git', ['check-ref-format', '--branch', branch])
+  const checkBranchName = spawn('git', ['check-ref-format', '--branch', `'${branch}'`])
   log(checkBranchName, 'Branch check', true)
 
   const throttleConfig = {
@@ -48,10 +48,10 @@ module.exports = function () {
   const prep = () => {
     const prepProcess = exec(`
       git stash
-      git branch -D ${branch}
-      git push origin :${branch}
-      git checkout -b ${branch}
-      git push origin ${branch}
+      git branch -D '${branch}'
+      git push origin :'${branch}'
+      git checkout -b '${branch}'
+      git push origin '${branch}'
     `)
     log(prepProcess, 'Prep')
   }
@@ -60,14 +60,14 @@ module.exports = function () {
     console.log(`🔥 ${event} in ${path}\n`)
     const pushProcess = exec(`
       git add .
-      git commit -m 'committing to ${branch}'
-      git push origin ${branch}
+      git commit -m 'committing to "${branch}"'
+      git push origin '${branch}'
     `)
     log(pushProcess, 'Commit & push')
   }
 
   if (!resume) prep()
-  const throttledPush = throttle(push, 30000, throttleConfig)
+  const throttledPush = throttle(push, 5000, throttleConfig)
   chokidar.watch('.', chokidarConfig).on('all', throttledPush)
 
   console.log(`
