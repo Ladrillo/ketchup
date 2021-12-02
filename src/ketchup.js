@@ -67,7 +67,7 @@ module.exports = function () {
   }
 
   if (!resume) prep()
-  const throttledPush = throttle(push, 5000, throttleConfig)
+  const throttledPush = throttle(push, 30000, throttleConfig)
   chokidar.watch('.', chokidarConfig).on('all', throttledPush)
 
   console.log(`
@@ -77,6 +77,6 @@ module.exports = function () {
     ██╔═██╗ ██╔══╝     ██║   ██║     ██╔══██║██║   ██║██╔═══╝ ╚═╝
     ██║  ██╗███████╗   ██║   ╚██████╗██║  ██║╚██████╔╝██║     ██╗
     ╚═╝  ╚═╝╚══════╝   ╚═╝    ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝
-    v${require('../package.json').version} pushing to ${branch} branch...
+    v. ${require('../package.json').version} pushing to "${branch}" branch...
   `)
 }
