@@ -37,8 +37,8 @@ module.exports = function () {
       git push origin ${branch}
     `)
     log(prepProcess)
-    prepProcess.on('exit', function (code, signal) {
-      console.log(`✨ child process exited with code ${code} and signal ${signal}`)
+    prepProcess.on('exit', (code, signal) => {
+      console.log(`✨ Prep process exited with code ${code} and signal ${signal}`)
     })
   }
 
@@ -51,7 +51,7 @@ module.exports = function () {
     `)
     log(pushProcess)
     pushProcess.on('exit', function (code, signal) {
-      console.log(`✨ child process exited with code ${code} and signal ${signal}`)
+      console.log(`✨ Push process exited with code ${code} and signal ${signal}`)
     })
   }
 
