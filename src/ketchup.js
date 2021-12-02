@@ -13,7 +13,7 @@ const log = (childProcess, nuke = false) => {
 }
 
 module.exports = function () {
-  const [, , branch = '@..foo---', resume] = process.argv
+  const [, , branch = 'lecture', resume] = process.argv
 
   const checkBranchName = spawn('git', ['check-ref-format', '--branch', branch])
   log(checkBranchName, true)
