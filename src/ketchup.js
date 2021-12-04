@@ -1,4 +1,4 @@
-const { exec, spawn } = require('child_process')
+const { exec, spawnSync } = require('child_process')
 const throttle = require('lodash.throttle')
 const chokidar = require('chokidar')
 
@@ -32,8 +32,12 @@ const log = (proc, name, nuke = false) => {
 module.exports = function () {
   const [, , branch = 'lecture', resume] = process.argv
 
-  const checkBranchName = spawn('git', ['check-ref-format', '--branch', `'${branch}'`])
-  log(checkBranchName, 'Branch check', true)
+  const { stdout, stderr, error } = spawnSync('git', ['check-ref-format', '--branch', `'${branch}'`])
+
+  if (error) {
+    console.error('somethin went baddie verifying your branch name:', stderr)
+    process.exit(1)
+  }
 
   const throttleConfig = {
     leading: false,
