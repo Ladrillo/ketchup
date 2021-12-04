@@ -32,10 +32,11 @@ const log = (proc, name, nuke = false) => {
 module.exports = function () {
   const [, , branch = 'lecture', resume] = process.argv
 
-  const { stdout, stderr, error } = spawnSync('git', ['check-ref-format', '--branch', `'${branch}'`])
+  const { stdout, stderr } = spawnSync('git', ['check-ref-format', '--branch', `'${branch}'`])
 
   if (stderr) {
-    console.error('somethin went baddie verifying your branch name:', stderr.toString())
+    console.error(`💀 ${stderr.toString()}\n`)
+    console.error('💀 Please fix the problem and try again!\n')
     process.exit(1)
   }
 
