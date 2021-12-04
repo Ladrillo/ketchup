@@ -45,23 +45,23 @@ module.exports = function () {
   const formatError = formatCheck.stderr.toString().trim()
 
   if (formatError) {
-    logAndKill(`\n💀 ${formatError}\n💀 Please fix the problem and try again!\n`)
+    logAndKill(`\n💀 ${formatError}\n💀 Please fix the problem and try again.\n`)
   }
 
   const currBranchCheck = spawnSync('git', ['rev-parse', '--abbrev-ref', 'HEAD'])
   const currBranchCheckError = currBranchCheck.stderr.toString().trim()
 
   if (currBranchCheckError) {
-    logAndKill(`\n💀 ${currBranchCheckError}\n💀 Please fix the problem and try again!\n`)
+    logAndKill(`\n💀 ${currBranchCheckError}\n💀 Please fix the problem and try again.\n`)
   }
 
   const currentBranch = currBranchCheck.stdout.toString().trim()
   if (!resume && currentBranch === branch) {
-    logAndKill(`\n💀 Pass the "resume" option to push to the same branch you are on\n`)
+    logAndKill(`\n💀 Pass the "resume" option to push to the same branch you are on.\n`)
   }
 
   if (resume && resume !== 'resume') {
-    logAndKill(`\n💀 You passed a ${resume} argument. Did you mean "resume"? Usage:\n`)
+    logAndKill(`\n💀 You passed a ${resume} argument. Did you mean "resume"?\n`)
   }
 
   console.log(`
