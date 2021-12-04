@@ -61,7 +61,7 @@ module.exports = function () {
   }
 
   if (resume && resume !== 'resume') {
-    logAndKill(`\n💀 You passed a ${resume} argument. Did you mean "resume"?\n`)
+    logAndKill(`\n💀 You passed a "${resume}" argument. Did you mean "resume"?\n`)
   }
 
   console.log(`
