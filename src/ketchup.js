@@ -49,7 +49,7 @@ module.exports = function () {
   }
 
   const currentBranch = currBranchCheck.stdout.toString().trim()
-  if (currentBranch === branch) {
+  if (!resume && currentBranch === branch) {
     console.error(`\n💀 Pass the "resume" option to push to the same branch you are on. Usage:\n
       @ladrillo/ketchup                      # pushes to a "lecture" branch
       @ladrillo/ketchup <branch-name>        # pushes to <branch-name>

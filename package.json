@@ -1,6 +1,6 @@
 {
   "name": "@ladrillo/ketchup",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "type": "commonjs",
   "scripts": {
     "dev": "nodemon --inspect index.js $1",
@@ -15,8 +15,8 @@
   },
   "devDependencies": {
     "@types/jest": "^27.0.3",
-    "eslint": "^8.3.0",
-    "jest": "^27.4.2",
+    "eslint": "^8.4.0",
+    "jest": "^27.4.3",
     "nodemon": "^2.0.15"
   },
   "bin": "./index.js",
