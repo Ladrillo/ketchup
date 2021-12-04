@@ -9,7 +9,8 @@ Ketchup is a CLI tool to allow teachers demoing a coding project to automaticall
 1. Be at the root folder of the project.
 2. Check out the branch you want to use as the _starting point_ of the demo (usually "main").
 3. Have a clean working tree. Any outstanding changes will be stashed.
-4. Decide on a branch name _to push commits to_, **different from the starting point branch**.
+4. Decide on a target branch _to push commits to_, **different from the starting point branch**.
+5. If the target branch already exists, it will be overwritten.
 
 ## The Teacher
 
