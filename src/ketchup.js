@@ -65,7 +65,7 @@ module.exports = function () {
   }
 
   if (resume && currentBranch !== branch) {
-    logAndKill(`\n💀 In order to resume you must pass the branch you are on.\n`)
+    logAndKill(`\n💀 In order to resume you must pass the name of your current branch.\n`)
   }
 
   console.log(`
