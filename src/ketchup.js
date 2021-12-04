@@ -34,7 +34,7 @@ module.exports = function () {
 
   const { stdout, stderr, error } = spawnSync('git', ['check-ref-format', '--branch', `'${branch}'`])
 
-  if (error) {
+  if (stderr) {
     console.error('somethin went baddie verifying your branch name:', stderr)
     process.exit(1)
   }
