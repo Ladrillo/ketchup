@@ -45,7 +45,7 @@ module.exports = function () {
 
   if (currBranchCheck.stderr) {
     console.error(
-      `\n💀 ${currBranchCheck.stderr.toString()}\n💀 Please fix the problem and try again!\n`
+      `\n💀 ${currBranchCheck.stderr.toString()}gaga\n💀 Please fix the problem and try again!\n`
     )
     process.exit(1)
   }
