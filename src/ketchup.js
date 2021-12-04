@@ -36,8 +36,8 @@ module.exports = function () {
 
   if (stderr) {
     console.error(`
-      💀 ${stderr.toString()}
-      💀 Please fix the problem and try again!\n
+💀 ${stderr.toString()}
+💀 Please fix the problem and try again!\n
     `)
     process.exit(1)
   }
