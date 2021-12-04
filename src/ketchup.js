@@ -41,9 +41,10 @@ module.exports = function () {
   }
 
   const currBranchCheck = spawnSync('git', ['rev-parse', '--abbrev-ref', 'HEAD'])
+  const currBranchCheckError = currBranchCheck.stderr.toString().trim()
 
-  if (currBranchCheck.stderr) {
-    console.error(`\n💀 ${currBranchCheck.stderr.toString()}gaga\n💀 Please fix the problem and try again! 2\n`)
+  if (currBranchCheckError) {
+    console.error(`\n💀 ${currBranchCheckError}\n💀 Please fix the problem and try again! 2\n`)
     process.exit(1)
   }
 
