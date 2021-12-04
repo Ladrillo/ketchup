@@ -57,6 +57,14 @@ module.exports = function () {
     process.exit(1)
   }
 
+  if (resume && resume !== 'resume') {
+    console.error(`\n💀 You passed a ${resume} argument. Did you mean "resume"? Usage:\n
+      @ladrillo/ketchup                      # pushes to a "lecture" branch
+      @ladrillo/ketchup <branch-name>        # pushes to <branch-name>
+      @ladrillo/ketchup <branch-name> resume # pushes to the current branch <branch-name>\n`)
+    process.exit(1)
+  }
+
   console.log(`
     ██╗  ██╗███████╗████████╗ ██████╗██╗  ██╗██╗   ██╗██████╗ ██╗
     ██║ ██╔╝██╔════╝╚══██╔══╝██╔════╝██║  ██║██║   ██║██╔══██╗██║
