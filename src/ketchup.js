@@ -29,6 +29,15 @@ const log = (proc, name, nuke = false) => {
   })
 }
 
+const logAndKill = message => {
+  console.error(message)
+  console.error(`Usage:\n
+    @ladrillo/ketchup                      # pushes to a "lecture" branch
+    @ladrillo/ketchup <branch-name>        # pushes to <branch-name>
+    @ladrillo/ketchup <branch-name> resume # pushes to the current branch <branch-name>\n`)
+  process.exit(1)
+}
+
 module.exports = function () {
   const [, , branch = 'lecture', resume] = process.argv
 
@@ -36,33 +45,23 @@ module.exports = function () {
   const formatError = formatCheck.stderr.toString().trim()
 
   if (formatError) {
-    console.error(`\n💀 ${formatError}\n💀 Please fix the problem and try again!\n`)
-    process.exit(1)
+    logAndKill(`\n💀 ${formatError}\n💀 Please fix the problem and try again!\n`)
   }
 
   const currBranchCheck = spawnSync('git', ['rev-parse', '--abbrev-ref', 'HEAD'])
   const currBranchCheckError = currBranchCheck.stderr.toString().trim()
 
   if (currBranchCheckError) {
-    console.error(`\n💀 ${currBranchCheckError}\n💀 Please fix the problem and try again!\n`)
-    process.exit(1)
+    logAndKill(`\n💀 ${currBranchCheckError}\n💀 Please fix the problem and try again!\n`)
   }
 
   const currentBranch = currBranchCheck.stdout.toString().trim()
   if (!resume && currentBranch === branch) {
-    console.error(`\n💀 Pass the "resume" option to push to the same branch you are on. Usage:\n
-      @ladrillo/ketchup                      # pushes to a "lecture" branch
-      @ladrillo/ketchup <branch-name>        # pushes to <branch-name>
-      @ladrillo/ketchup <branch-name> resume # pushes to the current branch <branch-name>\n`)
-    process.exit(1)
+    logAndKill(`\n💀 Pass the "resume" option to push to the same branch you are on\n`)
   }
 
   if (resume && resume !== 'resume') {
-    console.error(`\n💀 You passed a ${resume} argument. Did you mean "resume"? Usage:\n
-      @ladrillo/ketchup                      # pushes to a "lecture" branch
-      @ladrillo/ketchup <branch-name>        # pushes to <branch-name>
-      @ladrillo/ketchup <branch-name> resume # pushes to the current branch <branch-name>\n`)
-    process.exit(1)
+    logAndKill(`\n💀 You passed a ${resume} argument. Did you mean "resume"? Usage:\n`)
   }
 
   console.log(`
