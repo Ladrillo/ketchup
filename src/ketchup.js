@@ -35,18 +35,14 @@ module.exports = function () {
   const formatCheck = spawnSync('git', ['check-ref-format', '--branch', `'${branch}'`])
 
   if (formatCheck.stderr) {
-    console.error(
-      `\n💀 ${formatCheck.stderr.toString()}\n💀 Please fix the problem and try again! 1\n`
-    )
+    console.error(`\n💀 ${formatCheck.stderr.toString()}\n💀 Please fix the problem and try again! 1\n`)
     process.exit(1)
   }
 
   const currBranchCheck = spawnSync('git', ['rev-parse', '--abbrev-ref', 'HEAD'])
 
   if (currBranchCheck.stderr) {
-    console.error(
-      `\n💀 ${currBranchCheck.stderr.toString()}gaga\n💀 Please fix the problem and try again! 2\n`
-    )
+    console.error(`\n💀 ${currBranchCheck.stderr.toString()}gaga\n💀 Please fix the problem and try again! 2\n`)
     process.exit(1)
   }
 
