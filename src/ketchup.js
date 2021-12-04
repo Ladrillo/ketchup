@@ -33,8 +33,8 @@ const logAndKill = message => {
   console.error(message)
   console.error(`Usage:\n
     @ladrillo/ketchup                      # pushes to a "lecture" branch
-    @ladrillo/ketchup <branch-name>        # pushes to <branch-name>
-    @ladrillo/ketchup <branch-name> resume # pushes to the current branch <branch-name>\n`)
+    @ladrillo/ketchup <branch-name>        # pushes to a <branch-name> branch
+    @ladrillo/ketchup <branch-name> resume # pushes to the current <branch-name> branch\n`)
   process.exit(1)
 }
 
