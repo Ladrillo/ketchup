@@ -36,7 +36,7 @@ module.exports = function () {
 
   if (formatCheck.stderr) {
     console.error(
-      `\n💀 ${formatCheck.stderr.toString()}\n💀 Please fix the problem and try again!\n`
+      `\n💀 ${formatCheck.stderr.toString()}\n💀 Please fix the problem and try again! 1\n`
     )
     process.exit(1)
   }
@@ -45,14 +45,14 @@ module.exports = function () {
 
   if (currBranchCheck.stderr) {
     console.error(
-      `\n💀 ${currBranchCheck.stderr.toString()}gaga\n💀 Please fix the problem and try again!\n`
+      `\n💀 ${currBranchCheck.stderr.toString()}gaga\n💀 Please fix the problem and try again! 2\n`
     )
     process.exit(1)
   }
 
   const currentBranch = currBranchCheck.stdout.toString().trim()
   if (currentBranch === branch) {
-    console.error(`dis cannot do\n💀 Please fix the problem and try again!\n`)
+    console.error(`dis cannot do\n💀 Please fix the problem and try again! 3\n`)
     process.exit(1)
   }
 
