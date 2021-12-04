@@ -32,10 +32,29 @@ const log = (proc, name, nuke = false) => {
 module.exports = function () {
   const [, , branch = 'lecture', resume] = process.argv
 
-  const { stdout, stderr } = spawnSync('git', ['check-ref-format', '--branch', `'${branch}'`])
+  const formatCheck = spawnSync('git', ['check-ref-format', '--branch', `'${branch}'`])
 
-  if (stderr) {
-    console.error(`\n💀 ${stderr.toString()}\n💀 Please fix the problem and try again!\n`)
+  if (formatCheck.stderr) {
+    console.error(
+      `\n💀 ${formatCheck.stderr.toString()}\n💀 Please fix the problem and try again!\n`
+    )
+    process.exit(1)
+  }
+
+  const currBranchCheck = spawnSync('git', ['rev-parse', '--abbrev-ref', 'HEAD'])
+
+  if (currBranchCheck.stderr) {
+    console.error(
+      `\n💀 ${currBranchCheck.stderr.toString()}\n💀 Please fix the problem and try again!\n`
+    )
+    process.exit(1)
+  }
+
+  const currentBranch = currBranchCheck.stdout.toString().trim()
+  if (currentBranch === branch) {
+    console.error(
+      `\n💀 The current branch and the target branch cannot be the same unless you pass "resume".\n💀 Please fix the problem and try again!\n`
+    )
     process.exit(1)
   }
 
