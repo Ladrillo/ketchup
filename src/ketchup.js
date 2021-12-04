@@ -14,13 +14,12 @@ const getTime = (date = new Date()) => {
   })
 }
 
-const log = (proc, name, nuke = false) => {
+const log = (proc, name) => {
   proc.stdout.on('data', data => {
     console.log(`🍅 ${data}`)
   })
   proc.stderr.on('data', data => {
     console.error(`🍅 ${data}`)
-    if (nuke) process.exit(1)
   })
   proc.on('exit', code => {
     const emoji = code > 0 ? '❓' : '✨'
