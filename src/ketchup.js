@@ -55,12 +55,17 @@ module.exports = function () {
   }
 
   const currentBranch = currBranchCheck.stdout.toString().trim()
+
   if (!resume && currentBranch === branch) {
     logAndKill(`\n💀 Pass the "resume" option to push to the same branch you are on.\n`)
   }
 
   if (resume && resume !== 'resume') {
     logAndKill(`\n💀 You passed a "${resume}" argument. Did you mean "resume"?\n`)
+  }
+
+  if (resume && currentBranch !== branch) {
+    logAndKill(`\n💀 In order to resume you must pass the branch you are on.\n`)
   }
 
   console.log(`
