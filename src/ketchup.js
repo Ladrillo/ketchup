@@ -53,7 +53,7 @@ module.exports = function () {
     console.error(`\n💀Pass the "resume" option to push to the same branch you are on:\n
       @ladrillo/ketchup                      # pushes to a "lecture" branch
       @ladrillo/ketchup <branch-name>        # pushes to <branch-name>
-      @ladrillo/ketchup <branch-name> resume # resumes lecture, pushes to <branch-name>\n`)
+      @ladrillo/ketchup <branch-name> resume # resumes lecture, pushes to current branch <branch-name>\n`)
     process.exit(1)
   }
 
