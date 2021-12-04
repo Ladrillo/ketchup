@@ -32,11 +32,10 @@ const log = (proc, name, nuke = false) => {
 module.exports = function () {
   const [, , branch = 'lecture', resume] = process.argv
 
-  const formatCheck = spawnSync('git', ['check-ref-format', '--branch', `'${branch}'`])
+  const { stderr, stdin} = spawnSync('git', ['check-ref-format', '--branch', `'${branch}'`])
 
-  if (formatCheck.stderr) {
-    console.log(formatCheck.length)
-    console.error(`\n💀 ${formatCheck.stderr.toString()}\n💀 Please fix the problem and try again! 1\n`)
+  if (stderr) {
+    console.error(`\n💀 ${stderr.toString()}\n💀 Please fix the problem and try again! 1\n`)
     process.exit(1)
   }
 
