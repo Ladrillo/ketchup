@@ -35,8 +35,10 @@ module.exports = function () {
   const { stdout, stderr } = spawnSync('git', ['check-ref-format', '--branch', `'${branch}'`])
 
   if (stderr) {
-    console.error(`💀 ${stderr.toString()}\n`)
-    console.error('💀 Please fix the problem and try again!\n')
+    console.error(`
+      💀 ${stderr.toString()}
+      💀 Please fix the problem and try again!\n
+    `)
     process.exit(1)
   }
 
