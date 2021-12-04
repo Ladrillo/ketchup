@@ -52,9 +52,7 @@ module.exports = function () {
 
   const currentBranch = currBranchCheck.stdout.toString().trim()
   if (currentBranch === branch) {
-    console.error(
-      `\n💀 The current branch and the target branch cannot be the same unless you pass "resume".\n💀 Please fix the problem and try again!\n`
-    )
+    console.error(`\n💀 The current branch and the target branch cannot be the same unless you pass "resume".\n💀 Please fix the problem and try again!\n`)
     process.exit(1)
   }
 
