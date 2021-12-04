@@ -86,7 +86,7 @@ module.exports = function () {
   const chokidarConfig = {
     ignoreInitial: true,
     ignored: ['**/node_modules/**/*', '**/.git/**/*'],
-  }
+  } 
 
   const prep = () => {
     const prepProcess = exec(`
