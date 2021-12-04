@@ -36,7 +36,7 @@ module.exports = function () {
   const formatError = formatCheck.stderr.toString().trim()
 
   if (formatError) {
-    console.error(`\n💀 ${formatError}\n💀 Please fix the problem and try again! 1\n`)
+    console.error(`\n💀 ${formatError}\n💀 Please fix the problem and try again!\n`)
     process.exit(1)
   }
 
@@ -44,13 +44,13 @@ module.exports = function () {
   const currBranchCheckError = currBranchCheck.stderr.toString().trim()
 
   if (currBranchCheckError) {
-    console.error(`\n💀 ${currBranchCheckError}\n💀 Please fix the problem and try again! 2\n`)
+    console.error(`\n💀 ${currBranchCheckError}\n💀 Please fix the problem and try again!\n`)
     process.exit(1)
   }
 
   const currentBranch = currBranchCheck.stdout.toString().trim()
   if (currentBranch === branch) {
-    console.error(`dis cannot do\n💀 Please fix the problem and try again! 3\n`)
+    console.error(`\n💀Pass the resume option to push to the same branch you are on!\nketchup <branch-name> resume`)
     process.exit(1)
   }
 
