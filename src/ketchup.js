@@ -35,6 +35,7 @@ module.exports = function () {
   const formatCheck = spawnSync('git', ['check-ref-format', '--branch', `'${branch}'`])
 
   if (formatCheck.stderr) {
+    console.log(formatCheck)
     console.error(`\n💀 ${formatCheck.stderr.toString()}\n💀 Please fix the problem and try again! 1\n`)
     process.exit(1)
   }
