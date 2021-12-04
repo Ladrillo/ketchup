@@ -57,6 +57,16 @@ module.exports = function () {
     process.exit(1)
   }
 
+  console.log(`
+    ██╗  ██╗███████╗████████╗ ██████╗██╗  ██╗██╗   ██╗██████╗ ██╗
+    ██║ ██╔╝██╔════╝╚══██╔══╝██╔════╝██║  ██║██║   ██║██╔══██╗██║
+    █████╔╝ █████╗     ██║   ██║     ███████║██║   ██║██████╔╝██║
+    ██╔═██╗ ██╔══╝     ██║   ██║     ██╔══██║██║   ██║██╔═══╝ ╚═╝
+    ██║  ██╗███████╗   ██║   ╚██████╗██║  ██║╚██████╔╝██║     ██╗
+    ╚═╝  ╚═╝╚══════╝   ╚═╝    ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝
+    v. ${require('../package.json').version} pushing to "${branch}" branch...
+  `)
+
   const throttleConfig = {
     leading: false,
     trailing: true,
@@ -91,14 +101,4 @@ module.exports = function () {
   if (!resume) prep()
   const throttledPush = throttle(push, 30000, throttleConfig)
   chokidar.watch('.', chokidarConfig).on('all', throttledPush)
-
-  console.log(`
-    ██╗  ██╗███████╗████████╗ ██████╗██╗  ██╗██╗   ██╗██████╗ ██╗
-    ██║ ██╔╝██╔════╝╚══██╔══╝██╔════╝██║  ██║██║   ██║██╔══██╗██║
-    █████╔╝ █████╗     ██║   ██║     ███████║██║   ██║██████╔╝██║
-    ██╔═██╗ ██╔══╝     ██║   ██║     ██╔══██║██║   ██║██╔═══╝ ╚═╝
-    ██║  ██╗███████╗   ██║   ╚██████╗██║  ██║╚██████╔╝██║     ██╗
-    ╚═╝  ╚═╝╚══════╝   ╚═╝    ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝
-    v. ${require('../package.json').version} pushing to "${branch}" branch...
-  `)
 }
