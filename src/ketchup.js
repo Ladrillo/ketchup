@@ -31,9 +31,9 @@ const log = (proc, name) => {
 const logAndKill = message => {
   console.error(message)
   console.error(`Usage:\n
-    @ladrillo/ketchup                      # pushes to a "lecture" branch
-    @ladrillo/ketchup <branch-name>        # pushes to a <branch-name> branch
-    @ladrillo/ketchup <branch-name> resume # pushes to the current <branch-name> branch\n`)
+    npx @ladrillo/ketchup@latest                      # pushes to a "lecture" branch
+    npx @ladrillo/ketchup@latest <branch-name>        # pushes to a <branch-name> branch
+    npx @ladrillo/ketchup@latest <branch-name> resume # pushes to the current <branch-name> branch\n`)
   process.exit(1)
 }
 

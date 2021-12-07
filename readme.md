@@ -17,7 +17,7 @@ Ketchup is a CLI tool to allow teachers demoing a coding project to automaticall
 Execute once at the beginning of the demo:
 
 ```bash
-npx @ladrillo/ketchup foo-branch
+npx @ladrillo/ketchup@latest foo-branch
 ```
 
 If no branch name is provided (e.g. "foo-branch"), "lecture" is used instead. This is the branch Ketchup will push to, and students can reset to.
@@ -25,7 +25,7 @@ If no branch name is provided (e.g. "foo-branch"), "lecture" is used instead. Th
 If Ketchup is closed during the demo, you can continue where you left off by running:
 
 ```bash
-npx @ladrillo/ketchup foo-branch resume
+npx @ladrillo/ketchup@latest foo-branch resume
 ```
 
 ## The Students
