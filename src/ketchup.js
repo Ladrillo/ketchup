@@ -110,6 +110,6 @@ module.exports = function () {
   }
 
   if (!resume) prep()
-  const throttledPush = throttle(push, 30000, throttleConfig)
+  const throttledPush = throttle(push, 20000, throttleConfig)
   chokidar.watch('.', chokidarConfig).on('all', throttledPush)
 }

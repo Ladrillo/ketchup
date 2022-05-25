@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon --inspect index.js $1",
     "test": "jest",
-    "prepublishOnly": "npm i && npm test || exit 1"
+    "prepublishOnly": "npm version patch && npm i && npm test || exit 1"
   },
   "author": "Gabriel Cabrejas",
   "license": "ISC",
