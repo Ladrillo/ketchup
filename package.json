@@ -1,6 +1,6 @@
 {
   "name": "@ladrillo/ketchup",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "type": "commonjs",
   "scripts": {
     "dev": "nodemon --inspect index.js $1",
