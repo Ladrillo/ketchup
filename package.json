@@ -1,11 +1,11 @@
 {
   "name": "@ladrillo/ketchup",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "type": "commonjs",
   "scripts": {
     "dev": "nodemon --inspect index.js $1",
     "test": "jest",
-    "prepublishOnly": "npm version patch && npm i && npm test || exit 1"
+    "prepublishOnly": "npm i && npm test || exit 1"
   },
   "author": "Gabriel Cabrejas",
   "license": "ISC",
