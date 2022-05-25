@@ -2,7 +2,7 @@
 
 ## About
 
-Ketchup is a CLI tool to allow teachers demoing a coding project to automatically commit & push to Github whenever changes are made to the files of the project, throttling to at most once every 30 seconds. Students can reset their files and folders to the teacher's remote branch if they fall behind, and teachers don't have to push manually. Students must clone the teacher's repo _without_ forking it first.
+Ketchup is a CLI tool to allow teachers demoing a coding project to automatically commit & push to Github whenever changes are made to the files of the project, throttling to at most once every 20 seconds. Students can reset their files and folders to the teacher's remote branch if they fall behind, and teachers don't have to push manually. Students must clone the teacher's repo _without_ forking it first.
 
 ## Before Using Ketchup
 
